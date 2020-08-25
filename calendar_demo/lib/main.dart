@@ -15,7 +15,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: CalendarWidget(),
+      home: CalendarWidget(
+        title: 'Calendar',
+      ),
     );
   }
 }

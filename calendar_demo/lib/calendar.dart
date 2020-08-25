@@ -32,7 +32,6 @@ class _CalendarWidgetState extends State<CalendarWidget>
     super.initState();
     final _selectedDay = DateTime.now();
 
-    /*
     _events = {
       _selectedDay.subtract(Duration(days: 30)): [
         'Event A0',
@@ -86,18 +85,7 @@ class _CalendarWidgetState extends State<CalendarWidget>
         'Event C14'
       ],
     };
-*/
-    _events = {
-      _selectedDay.subtract(Duration(days: 2)): [
-        '8 Hours REGU',
-      ],
-      _selectedDay.subtract(Duration(days: 1)): [
-        '8 Hours REGU',
-      ],
-      _selectedDay.add(Duration(days: 2)): [
-        '16 Hours',
-      ],
-    };
+
     _selectedEvents = _events[_selectedDay] ?? [];
     _calendarController = CalendarController();
 
@@ -135,18 +123,23 @@ class _CalendarWidgetState extends State<CalendarWidget>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: <Widget>[
-        // Switch out 2 lines below to play with TableCalendar's settings
-        //-----------------------
-        _buildTableCalendar(),
-        // _buildTableCalendarWithBuilders(),
-        //const SizedBox(height: 8.0),
-        // _buildButtons(),
-        const SizedBox(height: 8.0),
-        Expanded(child: _buildEventList()),
-      ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Calendar Demo"),
+      ),
+      body: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          // Switch out 2 lines below to play with TableCalendar's settings
+          //-----------------------
+          _buildTableCalendar(),
+          // _buildTableCalendarWithBuilders(),
+          //const SizedBox(height: 8.0),
+          _buildButtons(),
+          const SizedBox(height: 8.0),
+          Expanded(child: _buildEventList()),
+        ],
+      ),
     );
   }
 
